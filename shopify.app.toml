@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "6fcf664c77c6ec6d52ee4465f5f1a187"
+application_url = "https://pig-cells-reviewer-accomplished.trycloudflare.com"
+embedded = true
+name = "boa-home-task-mt"
+handle = "boa-home-task-mt-1"
+
+[build]
+include_config_on_deploy = true
+dev_store_url = "home-assignment-117.myshopify.com"
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2024-10"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://pig-cells-reviewer-accomplished.trycloudflare.com/auth/callback",
+  "https://pig-cells-reviewer-accomplished.trycloudflare.com/auth/shopify/callback",
+  "https://pig-cells-reviewer-accomplished.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
