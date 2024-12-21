@@ -16,14 +16,12 @@ export default reactExtension("purchase.checkout.block.render", () => (
 
 function Extension() {
   const { lines } = useApi(); // גישה לנתוני ה-checkout
-  const x = useApi(); // גישה לנתוני ה-checkout
-  console.log("???????????????", x)
   const [selectedItems, setSelectedItems] = useState<string[]>([]); // שמירת פריטים נבחרים
 
   // פונקציה להוספה/הסרה של פריטים מתוך רשימת הפריטים שנבחרו
-  const toggleItem = (id: string) => {
+  const toggleItem = (item:any) => {
     setSelectedItems((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.includes(item) ? prev.filter((i:any) => i.id !== item.id) : [...prev, item]
     );
   };
 
@@ -58,7 +56,7 @@ function Extension() {
         <Checkbox
           key={item.id}
           checked={selectedItems.includes(item.id)}
-          onChange={() => toggleItem(item.id)}
+          onChange={() => toggleItem(item)}
         >
           {item.merchandise.title}
         </Checkbox>
