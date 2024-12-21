@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "6fcf664c77c6ec6d52ee4465f5f1a187"
-application_url = "https://pig-cells-reviewer-accomplished.trycloudflare.com"
+application_url = "https://lots-projected-yemen-strikes.trycloudflare.com"
 embedded = true
 name = "boa-home-task-mt"
 handle = "boa-home-task-mt-1"
@@ -20,9 +20,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://pig-cells-reviewer-accomplished.trycloudflare.com/auth/callback",
-  "https://pig-cells-reviewer-accomplished.trycloudflare.com/auth/shopify/callback",
-  "https://pig-cells-reviewer-accomplished.trycloudflare.com/api/auth/callback"
+  "https://lots-projected-yemen-strikes.trycloudflare.com/auth/callback",
+  "https://lots-projected-yemen-strikes.trycloudflare.com/auth/shopify/callback",
+  "https://lots-projected-yemen-strikes.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
