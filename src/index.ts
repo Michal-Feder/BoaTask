@@ -84,4 +84,26 @@ router.post('/save-cart', async (req, res) => {
   }
 });
 
+router.get('/get-saved-cart/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    // שליפת הפריטים השמורים לפי מזהה הלקוח
+    const savedCart = await prisma.savedCart.findUnique({
+      where: { customer_id: userId },
+    });
+
+    if (!savedCart) {
+      res.status(404).json({ message: 'No saved cart found' });
+    }
+
+    // החזרת הפריטים השמורים ללקוח
+    res.status(200).json({ savedCart: JSON.parse(savedCart.saved_cart) });
+  } catch (error) {
+    console.error('Error fetching saved cart:', error);
+    res.status(500).json({ error: 'Error fetching saved cart' });
+  }
+});
+
+
 module.exports = router;
