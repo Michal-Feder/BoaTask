@@ -3,7 +3,7 @@
 	"private": true,
 	"license": "UNLICENSED",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=development tsx watch --inspect-brk index.ts --ignore ./frontend ",
+		"dev": "cross-env NODE_ENV=development tsx watch index.ts --ignore ./frontend ",
 		"serve": "cross-env NODE_ENV=production node index.js",
 		"prisma": "prisma"
 	},
