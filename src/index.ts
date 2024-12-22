@@ -10,7 +10,7 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// const cors = require("cors");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -20,11 +20,11 @@ const PORT = parseInt(backendPort || envPort, 10);
 
 const app = express();
 
-// app.use(cors({
-//   origin: "*", // אפשר לאפשר מקור ספציפי כמו "https://your-shopify-store.com"
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization"],
-// }));
+app.use(cors({
+  origin: "*", // אפשר לאפשר מקור ספציפי כמו "https://your-shopify-store.com"
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
@@ -85,26 +85,26 @@ router.post('/save-cart', async (req, res) => {
   }
 });
 
-// router.get('/get-saved-cart/:userId', async (req, res) => {
-//   const { userId } = req.params;
+router.get('/get-saved-cart/:userId', async (req, res) => {
+  const { userId } = req.params;
 
-//   try {
-//     // שליפת הפריטים השמורים לפי מזהה הלקוח
-//     const savedCart = await prisma.savedCart.findUnique({
-//       where: { customer_id: userId },
-//     });
+  try {
+    // שליפת הפריטים השמורים לפי מזהה הלקוח
+    const savedCart = await prisma.savedCart.findUnique({
+      where: { customer_id: userId },
+    });
 
-//     if (!savedCart) {
-//       res.status(404).json({ message: 'No saved cart found' });
-//     }
+    if (!savedCart) {
+      res.status(404).json({ message: 'No saved cart found' });
+    }
 
-//     // החזרת הפריטים השמורים ללקוח
-//     res.status(200).json({ savedCart: JSON.parse(savedCart.saved_cart) });
-//   } catch (error) {
-//     console.error('Error fetching saved cart:', error);
-//     res.status(500).json({ error: 'Error fetching saved cart' });
-//   }
-// });
+    // החזרת הפריטים השמורים ללקוח
+    res.status(200).json({ savedCart: JSON.parse(savedCart.saved_cart) });
+  } catch (error) {
+    console.error('Error fetching saved cart:', error);
+    res.status(500).json({ error: 'Error fetching saved cart' });
+  }
+});
 
 
 module.exports = router;
